@@ -38,7 +38,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
         loadUi("./ui_new.ui",self)
-        self.setWindowIcon(QIcon("Assets/diagram.png"))
+        self.setWindowIcon(QIcon("./Assets/diagram.png"))
         self.Cycles_list.clear()
         self.phases_list.clear()
         self.ListWidget.clear()
@@ -292,14 +292,14 @@ class MainWindow(QMainWindow):
     # =========================== Press Functions Start ======================================================================= #
     # ========================================= MAIN WINDOW APP START ========================================================= #
 
-app=QApplication(sys.argv)
-# splash = SplashScreen()
-# splash.show()
-# splash.progress()
-mainwindow=MainWindow()
-# splash.finish(mainwindow)
-mainwindow.show()
-sys.exit(app.exec_())
 
-# if __name__ == "__main__":
-#     main()
+
+if __name__ == "__main__":
+    app=QApplication(sys.argv)
+    # splash = SplashScreen()
+    # splash.show()
+    # splash.progress()
+    mainwindow=MainWindow()
+    # splash.finish(mainwindow)
+    mainwindow.show()
+    sys.exit(app.exec_())
