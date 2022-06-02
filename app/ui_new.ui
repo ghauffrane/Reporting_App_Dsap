@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1494</width>
-    <height>851</height>
+    <width>1497</width>
+    <height>929</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -32,7 +32,7 @@
       <x>0</x>
       <y>0</y>
       <width>241</width>
-      <height>841</height>
+      <height>911</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -76,7 +76,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>26</pointsize>
+        <pointsize>18</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -96,14 +96,14 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>190</y>
-       <width>221</width>
-       <height>111</height>
+       <y>180</y>
+       <width>231</width>
+       <height>131</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
       <property name="spacing">
-       <number>9</number>
+       <number>15</number>
       </property>
       <property name="leftMargin">
        <number>20</number>
@@ -195,7 +195,7 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>710</y>
+       <y>770</y>
        <width>211</width>
        <height>71</height>
       </rect>
@@ -270,10 +270,10 @@ color: rgb(255, 255, 255);</string>
     <widget class="QLabel" name="version">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>790</y>
-       <width>171</width>
-       <height>28</height>
+       <x>40</x>
+       <y>860</y>
+       <width>121</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -297,7 +297,7 @@ color: rgb(255, 255, 255);</string>
       <x>240</x>
       <y>0</y>
       <width>1301</width>
-      <height>861</height>
+      <height>911</height>
      </rect>
     </property>
     <widget class="QWidget" name="pressing_widget">
@@ -306,8 +306,8 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1301</width>
-        <height>841</height>
+        <width>1261</width>
+        <height>911</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -317,7 +317,8 @@ color: rgb(255, 255, 255);</string>
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(4, 15, 19);</string>
+       <string notr="true">background-color: rgb(4, 15, 19);
+background-color: rgb(4, 15, 19);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -325,291 +326,295 @@ color: rgb(255, 255, 255);</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QFontComboBox" name="phases_list">
-       <property name="geometry">
-        <rect>
-         <x>430</x>
-         <y>50</y>
-         <width>131</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::NoContextMenu</enum>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(7, 30, 38);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="currentText">
-        <string>Ubuntu</string>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
-       </property>
-       <property name="currentFont">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="browse">
-       <property name="geometry">
-        <rect>
-         <x>180</x>
-         <y>10</y>
-         <width>111</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(20, 75, 95);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Browse</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Assets/browsing.png</normaloff>Assets/browsing.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="textBrowser">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>10</y>
-         <width>461</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(7, 30, 38);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="process_data">
-       <property name="geometry">
-        <rect>
-         <x>790</x>
-         <y>10</y>
-         <width>211</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(20, 75, 95);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Process Data</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Assets/agile.png</normaloff>Assets/agile.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label4">
-       <property name="geometry">
-        <rect>
-         <x>300</x>
-         <y>50</y>
-         <width>111</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,5,1,0">
+         <property name="spacing">
+          <number>14</number>
+         </property>
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>50</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label1">
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>11</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);
 font: 75 11pt &quot;Verdana&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Choose Phase</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="excelReportBTN">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>100</y>
-         <width>221</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(20, 75, 95);
+           </property>
+           <property name="text">
+            <string>Choose Csv File</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="browse">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(20, 75, 95);
 border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Make Cycle Report in Excel</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Assets/sheets.png</normaloff>Assets/sheets.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label2">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>50</y>
-         <width>101</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);
-font: 75 11pt &quot;Verdana&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Choose Cycle </string>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="ListWidget">
-       <property name="geometry">
-        <rect>
-         <x>730</x>
-         <y>50</y>
-         <width>271</width>
-         <height>101</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(7, 30, 38);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::AdjustToContents</enum>
-       </property>
-       <property name="selectionMode">
-        <enum>QAbstractItemView::MultiSelection</enum>
-       </property>
-      </widget>
-      <widget class="QTabWidget" name="tabWidget">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>190</y>
-         <width>1061</width>
-         <height>621</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(7, 30, 38);
 color: rgb(255, 255, 255);
-border-radius: 8px; 
-</string>
-       </property>
-       <property name="tabShape">
-        <enum>QTabWidget::Rounded</enum>
-       </property>
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-       <widget class="QWidget" name="tab">
-        <attribute name="icon">
-         <iconset>
-          <normaloff>Assets/button.png</normaloff>Assets/button.png</iconset>
-        </attribute>
-        <attribute name="title">
-         <string>Charts</string>
-        </attribute>
-        <widget class="QLabel" name="chart_area">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>40</y>
-           <width>1071</width>
-           <height>561</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(7, 30, 38);
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="preview_chart">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>121</width>
-           <height>25</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(20, 75, 95);
+padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>Browse</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>Assets/browsing.png</normaloff>Assets/browsing.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="textBrowser">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(7, 30, 38);
 border-radius:5px;
 color: rgb(255, 255, 255);</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="process_data">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(20, 75, 95);
+border-radius:5px;
+color: rgb(255, 255, 255);
+padding: 5px; </string>
+           </property>
+           <property name="text">
+            <string>Process Data</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>Assets/agile.png</normaloff>Assets/agile.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QProgressBar" name="data_process_prog_bar">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>4</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QProgressBar{
+	border-radius:10px;
+	background-color: rgb(7, 30, 38);
+}
+
+
+QProgressBar::chunk{
+	border-radius:10px;
+	
+	background-color: rgb(219, 50, 218);
+}</string>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+           </property>
+           <property name="textVisible">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1,0,0,1,3">
+         <property name="spacing">
+          <number>20</number>
          </property>
-         <property name="text">
-          <string>Preview Chart</string>
+         <property name="leftMargin">
+          <number>5</number>
          </property>
-        </widget>
-        <widget class="QCheckBox" name="checkBox">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>10</y>
-           <width>231</width>
-           <height>23</height>
-          </rect>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>10</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);
+font: 75 11pt &quot;Verdana&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Choose Cycle </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFontComboBox" name="Cycles_list">
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="contextMenuPolicy">
+            <enum>Qt::NoContextMenu</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(7, 30, 38);
+border-radius:5px;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="currentText">
+            <string>MS Shell Dlg 2</string>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+           </property>
+           <property name="writingSystem">
+            <enum>QFontDatabase::Any</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label4">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);
+font: 75 11pt &quot;Verdana&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Choose Phase</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFontComboBox" name="phases_list">
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="contextMenuPolicy">
+            <enum>Qt::NoContextMenu</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(7, 30, 38);
+border-radius:5px;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="currentText">
+            <string>MS Shell Dlg 2</string>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+           </property>
+           <property name="currentFont">
+            <font>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);
+font: 75 11pt &quot;Verdana&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Choose Variable</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="ListWidget">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(7, 30, 38);
+border-radius:5px;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustToContents</enum>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::MultiSelection</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="excelReportBTN">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <property name="font">
           <font>
@@ -618,484 +623,690 @@ color: rgb(255, 255, 255);</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(151, 64, 191);</string>
+          <string notr="true">background-color: rgb(20, 75, 95);
+border-radius:5px;
+color: rgb(255, 255, 255);
+padding: 5px; </string>
          </property>
          <property name="text">
-          <string>Add this chart to PDF Report</string>
+          <string>    Make Cycle Report in Excel      </string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Assets/sheets.png</normaloff>Assets/sheets.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
          </property>
         </widget>
-       </widget>
-       <widget class="QWidget" name="tab_2">
-        <attribute name="icon">
-         <iconset>
-          <normaloff>Assets/dashboard.png</normaloff>Assets/dashboard.png</iconset>
-        </attribute>
-        <attribute name="title">
-         <string>Summary Metircs</string>
-        </attribute>
-        <widget class="QLabel" name="lbl_cycle_nbr">
-         <property name="geometry">
-          <rect>
-           <x>180</x>
-           <y>20</y>
-           <width>121</width>
-           <height>21</height>
-          </rect>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pdfReportBTN">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255);
+          <string notr="true">background-color: rgb(20, 75, 95);
+border-radius:5px;
+color: rgb(255, 255, 255);
+padding: 5px; </string>
+         </property>
+         <property name="text">
+          <string>      Make Cycle Report in PDF      </string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Assets/pdf.png</normaloff>Assets/pdf.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QTabWidget {
+background-color: rgb(4, 15, 19);
+color: rgb(255, 255, 255);
+border-radius: 8px; 
+}
+
+QTabWidget::tab {
+background-color: rgb(4, 15, 19);
+color: rgb(255, 255, 255);
+border-radius: 8px; 
+}</string>
+         </property>
+         <property name="tabShape">
+          <enum>QTabWidget::Rounded</enum>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+         <widget class="QWidget" name="tab">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(4, 15, 19);
+</string>
+          </property>
+          <attribute name="icon">
+           <iconset>
+            <normaloff>Assets/button.png</normaloff>Assets/button.png</iconset>
+          </attribute>
+          <attribute name="title">
+           <string>Charts</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,2">
+             <property name="spacing">
+              <number>100</number>
+             </property>
+             <property name="leftMargin">
+              <number>10</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>10</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="preview_chart">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(20, 75, 95);
+border-radius:5px;
+color: rgb(255, 255, 255);
+padding: 7px; 
+</string>
+               </property>
+               <property name="text">
+                <string>  Preview Chart  </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(151, 64, 191);</string>
+               </property>
+               <property name="text">
+                <string>Add this chart to PDF Report</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="chart_area">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(7, 30, 38);
+
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="icon">
+           <iconset>
+            <normaloff>Assets/dashboard.png</normaloff>Assets/dashboard.png</iconset>
+          </attribute>
+          <attribute name="title">
+           <string>Summary Metircs</string>
+          </attribute>
+          <widget class="QWidget" name="gridLayoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>50</y>
+             <width>1141</width>
+             <height>71</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="leftMargin">
+             <number>5</number>
+            </property>
+            <property name="topMargin">
+             <number>5</number>
+            </property>
+            <property name="rightMargin">
+             <number>5</number>
+            </property>
+            <property name="bottomMargin">
+             <number>5</number>
+            </property>
+            <property name="horizontalSpacing">
+             <number>20</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="lbl_cycle_nbr">
+              <property name="font">
+               <font>
+                <family>Ubuntu</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);
 font: 13pt &quot;Ubuntu&quot;;
 </string>
-         </property>
-         <property name="text">
-          <string>Cyclel number</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_cycle_nbr_value">
-         <property name="geometry">
-          <rect>
-           <x>300</x>
-           <y>20</y>
-           <width>31</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_cycle_duration">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>20</y>
-           <width>191</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Press Cycle (Start - Stop)</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_cycle_duration_value">
-         <property name="geometry">
-          <rect>
-           <x>610</x>
-           <y>20</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+              </property>
+              <property name="text">
+               <string>Cyclel number</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="lbl_cycle_nbr_value">
+              <property name="styleSheet">
+               <string notr="true">font: 16pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="lbl_cycle_duration_value">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);
 </string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_membrane_pressure">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>120</y>
-           <width>251</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Inside membrane pressure</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_membrane_pressure_value">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>180</y>
-           <width>251</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="lbl_cycle_duration">
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>Press Cycle (Start - Stop)</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="verticalLayoutWidget_3">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>200</y>
+             <width>324</width>
+             <height>291</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <property name="spacing">
+             <number>20</number>
+            </property>
+            <property name="leftMargin">
+             <number>7</number>
+            </property>
+            <property name="topMargin">
+             <number>5</number>
+            </property>
+            <property name="rightMargin">
+             <number>7</number>
+            </property>
+            <property name="bottomMargin">
+             <number>5</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lbl_membrane_pressure">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+              </property>
+              <property name="text">
+               <string>Inside membrane pressure</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbl_membrane_pressure_value">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
 background-color: rgb(20, 75, 95);
 color: rgb(151, 64, 191);
 border-radius:5px;
 
 </string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="lineWidth">
-          <number>1</number>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_press_nweight">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>120</y>
-           <width>231</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Press net weight</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_press_nweight_value">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>180</y>
-           <width>231</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="lineWidth">
+               <number>1</number>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+              </property>
+              <property name="text">
+               <string>Extracted must quantity</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
 background-color: rgb(20, 75, 95);
 color: rgb(151, 64, 191);
 border-radius:5px;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_sl_avg_press_nweight">
-         <property name="geometry">
-          <rect>
-           <x>690</x>
-           <y>110</y>
-           <width>291</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Sliding average of press net weight</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="lbl_sl_avg_press_nweight_value">
-         <property name="geometry">
-          <rect>
-           <x>690</x>
-           <y>180</y>
-           <width>291</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>URW Bookman L</family>
-           <pointsize>22</pointsize>
-           <weight>9</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="verticalLayoutWidget_4">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>200</y>
+             <width>331</width>
+             <height>291</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="spacing">
+             <number>20</number>
+            </property>
+            <property name="leftMargin">
+             <number>7</number>
+            </property>
+            <property name="topMargin">
+             <number>5</number>
+            </property>
+            <property name="rightMargin">
+             <number>7</number>
+            </property>
+            <property name="bottomMargin">
+             <number>5</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lbl_press_nweight">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+              </property>
+              <property name="text">
+               <string>Press net weight</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbl_press_nweight_value">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
 background-color: rgb(20, 75, 95);
 color: rgb(151, 64, 191);
 border-radius:5px;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="midLineWidth">
-          <number>0</number>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>330</y>
-           <width>251</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Extracted must quantity</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_2">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>400</y>
-           <width>251</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+              </property>
+              <property name="text">
+               <string>Must extraction percentage</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
 background-color: rgb(20, 75, 95);
 color: rgb(151, 64, 191);
 border-radius:5px;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_3">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>330</y>
-           <width>251</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Must extraction percentage</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_4">
-         <property name="geometry">
-          <rect>
-           <x>400</x>
-           <y>400</y>
-           <width>241</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="verticalLayoutWidget_5">
+           <property name="geometry">
+            <rect>
+             <x>790</x>
+             <y>200</y>
+             <width>419</width>
+             <height>291</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <property name="spacing">
+             <number>20</number>
+            </property>
+            <property name="leftMargin">
+             <number>7</number>
+            </property>
+            <property name="topMargin">
+             <number>5</number>
+            </property>
+            <property name="rightMargin">
+             <number>7</number>
+            </property>
+            <property name="bottomMargin">
+             <number>5</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lbl_sl_avg_press_nweight">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+              </property>
+              <property name="text">
+               <string>Sliding average of press net weight</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbl_sl_avg_press_nweight_value">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>URW Bookman L</family>
+                <pointsize>22</pointsize>
+                <weight>9</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
 background-color: rgb(20, 75, 95);
 color: rgb(151, 64, 191);
 border-radius:5px;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_5">
-         <property name="geometry">
-          <rect>
-           <x>690</x>
-           <y>330</y>
-           <width>291</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Loaded product quantity</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_6">
-         <property name="geometry">
-          <rect>
-           <x>690</x>
-           <y>400</y>
-           <width>291</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="midLineWidth">
+               <number>0</number>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+              </property>
+              <property name="text">
+               <string>Loaded product quantity</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_6">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
 background-color: rgb(20, 75, 95);
 color: rgb(151, 64, 191);
 border-radius:5px;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </widget>
-       </widget>
-      </widget>
-      <widget class="QLabel" name="label3">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>50</y>
-         <width>131</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);
-font: 75 11pt &quot;Verdana&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Choose Variable</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pdfReportBTN">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>130</y>
-         <width>211</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(20, 75, 95);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Make Cycle Report in PDF</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Assets/pdf.png</normaloff>Assets/pdf.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label1">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>10</y>
-         <width>121</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Verdana</family>
-         <pointsize>11</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);
-font: 75 11pt &quot;Verdana&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Choose Csv File</string>
-       </property>
-      </widget>
-      <widget class="QFontComboBox" name="Cycles_list">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>50</y>
-         <width>91</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-         <kerning>false</kerning>
-        </font>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::NoContextMenu</enum>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(7, 30, 38);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="currentText">
-        <string>Ubuntu</string>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
-       </property>
-       <property name="writingSystem">
-        <enum>QFontDatabase::Any</enum>
-       </property>
-      </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="filter_widget">
@@ -1104,8 +1315,8 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1081</width>
-        <height>831</height>
+        <width>1261</width>
+        <height>891</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -1143,8 +1354,8 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1241</width>
-        <height>831</height>
+        <width>1271</width>
+        <height>891</height>
        </rect>
       </property>
       <property name="frameShape">

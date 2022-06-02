@@ -79,11 +79,7 @@ class MainWindow(QMainWindow):
     
     def processData(self):
         
-        # self.movie = QMovie("./app/Assets/Ghost.gif")
-        # self.loading.setMovie(self.movie)
-        # self.loading.show()
-        # self.movie.start()
-
+        self.data_process_prog_bar.setValue(0)
         
         self.this_session_data = press_schemas.DataSession()
         self.this_session_data.chosen_file_path = self.file_path
@@ -94,12 +90,15 @@ class MainWindow(QMainWindow):
         self.phases_list.clear()
         self.ListWidget.clear()
         self.chart_area.clear()
+        self.data_process_prog_bar.setValue(5)
         csvloader = load.LoadData()
+        self.data_process_prog_bar.setValue(20)
 
         try: 
             csvdata = csvloader.load_dt(self.this_session_data.chosen_file_path)
             self.this_session_data.dataframe = csvdata
             self.this_session_data.existing_vars = csvloader.check_variables()
+            self.data_process_prog_bar.setValue(45)
             
         except Exception: 
             self.statusBar().showMessage('Issue with loading your csv file', 1000)
@@ -115,6 +114,8 @@ class MainWindow(QMainWindow):
 
         if os.path.exists(self.this_session_data.dir_path_pdf) == False:
             os.mkdir(self.this_session_data.dir_path_pdf)
+        
+        self.data_process_prog_bar.setValue(55)
         # ============================================================================================================ #
 
         filling_status, dewater_status, press_status, dry_status = csvloader.get_status_columns()
@@ -125,14 +126,14 @@ class MainWindow(QMainWindow):
         self.Cycles_list.addItems(cycles_nbrs)
         self.ListWidget.addItems(self.this_session_data.existing_vars)
         self.phases_list.addItems(["all", "filling", "dewatering", "pressing", "drying"])
-
+        self.data_process_prog_bar.setValue(80)
         self.preview_chart.clicked.connect(self.previewChart)
         self.Cycles_list.view().pressed.connect(self.SummaryCycleTable)
         self.excelReportBTN.clicked.connect(self.cycle_excel_report)
         self.checkBox.clicked.connect(self.getCurrentChart)
         self.pdfReportBTN.clicked.connect(self.make_pdf_report)
 
-        # self.movie.stop()
+        self.data_process_prog_bar.setValue(100)
 
         self.statusBar().showMessage("Data successfully processed. There are {} cycles in this data file.".format(total_cycles))
         self.statusBar().setStyleSheet("background-color : green")
