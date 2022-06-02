@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 class DataSession:
-    pdf_charts_filenames = []
+    pdf_charts_filenames = set
     chosen_file_path : str = None
     dataframe = None
     existing_vars: list = None

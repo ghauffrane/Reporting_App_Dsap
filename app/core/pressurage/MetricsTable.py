@@ -40,6 +40,9 @@ class BasicMetrics:
         Returns a dict of varnames and their corresponding metric values """
 
         metrics = dict()
+        
+        if "4300 Analog values - Inside membrane pressure" not in self.exist_vars:
+            metrics["Inside membrane pressure"] = "NA"
 
         for vr in self.exist_vars: 
             if vr == "4300 Analog values - Inside membrane pressure": 

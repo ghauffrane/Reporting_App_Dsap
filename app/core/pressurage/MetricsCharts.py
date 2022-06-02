@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd
 import numpy as np
+import os
 
 class Charts: 
     def __init__(self,  cycle_nbr, cycle_data, existing_variables):
@@ -62,11 +63,11 @@ class Charts:
         plt.gcf().autofmt_xdate()
         #plt.subplots_adjust(bottom= 0.1, left = 0.1)
         ax.legend(loc = "upper left")
-        
-        plt.savefig(f"{output_dir}/{plot_label} - phase: {phase} - cycle: {self.cycle_nbr}.png")
+        # os.path.join(output_dir, f"{plot_label} - phase: {phase} - cycle: {self.cycle_nbr}.png")
+        plt.savefig(os.path.join(output_dir, f"{plot_label}_phase_{phase}__cycle_{self.cycle_nbr}.png"))
         plt.close()
         
-        return f"{output_dir}/{plot_label} - phase: {phase} - cycle: {self.cycle_nbr}.png"
+        return os.path.join(output_dir, f"{plot_label}_phase_{phase}__cycle_{self.cycle_nbr}.png")
 
 
     def bichart(self, varnames, phase, output_dir):
@@ -124,6 +125,6 @@ class Charts:
         ax.legend(loc = "upper left")
         ax2.legend(loc = "lower left")
         
-        plt.savefig(f"{output_dir}/{plot_label0} & {plot_label1} - phase: {phase} - cycle: {self.cycle_nbr}.png")
+        plt.savefig(os.path.join(output_dir, f"{plot_label0}_{plot_label1}_phase_{phase}__cycle_{self.cycle_nbr}.png"))
         plt.close()
-        return f"{output_dir}/{plot_label0} & {plot_label1} - phase: {phase} - cycle: {self.cycle_nbr}.png"   
+        return os.path.join(output_dir, f"{plot_label0}_{plot_label1}_phase_{phase}__cycle_{self.cycle_nbr}.png")   
