@@ -37,7 +37,7 @@ class SplashScreen(QSplashScreen):
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
-        loadUi("./app/resp_ui.ui",self)
+        loadUi("./resp_ui.ui",self)
         self.setWindowIcon(QIcon("./Assets/diagram.png"))
         self.centralwidget.setLayout(self.horizontalLayout)
         self.Cycles_list.clear()
