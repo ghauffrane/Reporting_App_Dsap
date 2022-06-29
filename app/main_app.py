@@ -1,17 +1,22 @@
 # ========================================= IMPORTS ==================================================================== #
+import csv
 import sys
 import os
 import time
+import numpy as np
+from functools import partial
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPixmap, QMovie, QIcon
-from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog, QMainWindow, QSplashScreen
+from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog, QMainWindow, QSplashScreen, QHeaderView
 from PyQt5.uic import loadUi
+from core import sis
 from core.pressurage import load 
 from core.pressurage import cycles_module
 from core.pressurage import MetricsCharts
 from core.pressurage import MetricsTable
 from core.pressurage import press_schemas
+from core import dataframeTable
 import openpyxl
 from openpyxl import load_workbook
 import matplotlib.pyplot as plt
@@ -37,7 +42,7 @@ class SplashScreen(QSplashScreen):
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
-        loadUi("./resp_ui.ui",self)
+        loadUi("./latest.ui",self)
         self.setWindowIcon(QIcon("./Assets/diagram.png"))
         self.centralwidget.setLayout(self.horizontalLayout)
         self.Cycles_list.clear()
@@ -52,8 +57,11 @@ class MainWindow(QMainWindow):
         self.pressing_btn.clicked.connect(self.go_pressing_widget)
         self.filter_widget_btn.clicked.connect(self.go_filter_widget)
         self.expert_report_widget_btn.clicked.connect(self.go_expert_widget)
-        self.browse.clicked.connect(self.browsefiles)
+        self.sys_btn.clicked.connect(self.go_sys_widget)
+        self.browse.clicked.connect(partial(self.browsefiles, "browse"))
+        self.browse_3.clicked.connect(partial(self.browsefiles, "browse_3"))
         self.process_data.clicked.connect(self.processData)
+        self.process_data_3.clicked.connect(self.process_sys_data)
         
         self.cleanup_btn.clicked.connect(self.CleanUp)
 
@@ -68,25 +76,28 @@ class MainWindow(QMainWindow):
 
     def go_expert_widget(self):
         self.stacked_widget.setCurrentIndex(2)
+    
+    def go_sys_widget(self): 
+        self.stacked_widget.setCurrentIndex(3)
     # =========================== Stacked Widget Redirections End ============================================================= #
 
     # =========================== Press Functions Start ======================================================================= #
     
-    def browsefiles(self):
-        fname=QFileDialog.getOpenFileName(self, 'Open file', 'CSV (*.csv *.tsv)')
-        self.textBrowser.setText(fname[0])
-        self.file_path =  fname[0] 
+    def browsefiles(self, clickedBrowse):
+        fname=QFileDialog.getOpenFileName(self, 'Open file', 'CSV (*.csv *.tsv)')  
+        
+        if clickedBrowse == "browse":
+            self.textBrowser.setText(fname[0])
+            self.file_path =  fname[0]
+        elif clickedBrowse == "browse_3":
+            self.textBrowser_3.setText(fname[0])
+            self.sys_data_path = fname[0]
     
     def processData(self):
-        
-        # self.movie = QMovie("/home/gofy/Della_Toffola_Reporting/Assets/Ghost.gif")
-        # self.loading.setMovie(self.movie)
-        # # self.loading.show()
-        # self.movie.start()
 
-        
+        self.data_process_prog_bar.setValue(0)
         self.this_session_data = press_schemas.DataSession()
-        self.this_session_data.chosen_file_path = self.file_path
+        self.this_session_data.chosen_file_path = self.file_path   
         self.this_session_data.update_current_chart_path = None
         self.this_session_data.pdf_charts_filenames = []
 
@@ -94,12 +105,15 @@ class MainWindow(QMainWindow):
         self.phases_list.clear()
         self.ListWidget.clear()
         self.chart_area.clear()
+        self.data_process_prog_bar.setValue(5)
         csvloader = load.LoadData()
-
+        self.data_process_prog_bar.setValue(20)
+        
         try: 
             csvdata = csvloader.load_dt(self.this_session_data.chosen_file_path)
             self.this_session_data.dataframe = csvdata
             self.this_session_data.existing_vars = csvloader.check_variables()
+            self.data_process_prog_bar.setValue(45)
             
         except Exception: 
             self.statusBar().showMessage('Issue with loading your csv file', 1000)
@@ -115,6 +129,7 @@ class MainWindow(QMainWindow):
 
         if os.path.exists(self.this_session_data.dir_path_pdf) == False:
             os.mkdir(self.this_session_data.dir_path_pdf)
+        self.data_process_prog_bar.setValue(55)
         # ============================================================================================================ #
 
         filling_status, dewater_status, press_status, dry_status = csvloader.get_status_columns()
@@ -125,15 +140,14 @@ class MainWindow(QMainWindow):
         self.Cycles_list.addItems(cycles_nbrs)
         self.ListWidget.addItems(self.this_session_data.existing_vars)
         self.phases_list.addItems(["all", "filling", "dewatering", "pressing", "drying"])
-
+        self.data_process_prog_bar.setValue(80)
         self.preview_chart.clicked.connect(self.previewChart)
         self.Cycles_list.view().pressed.connect(self.SummaryCycleTable)
         self.excelReportBTN.clicked.connect(self.cycle_excel_report)
         self.checkBox.clicked.connect(self.getCurrentChart)
         self.pdfReportBTN.clicked.connect(self.make_pdf_report)
 
-        # self.movie.stop()
-
+        self.data_process_prog_bar.setValue(100)
         self.statusBar().showMessage("Data successfully processed. There are {} cycles in this data file.".format(total_cycles))
         self.statusBar().setStyleSheet("background-color : green")
 
@@ -290,7 +304,77 @@ class MainWindow(QMainWindow):
                 os.remove(os.path.join(images_dir, p))
         self.statusBar().showMessage("Cleanup is successfully finished.")
 
-    # =========================== Press Functions Start ======================================================================= #
+
+    def process_sys_data(self):
+        self.data_process_prog_bar_3.setValue(0)
+        self.this_sys_session_data = press_schemas.SysDataSession()
+        self.this_sys_session_data.chosen_file_path = self.sys_data_path  
+        self.data_process_prog_bar_3.setValue(5)
+        csvloader2 = load.LoadData()
+        self.data_process_prog_bar_3.setValue(20)
+        
+        try: 
+            csvdata = csvloader2.load_dt(self.this_sys_session_data.chosen_file_path)
+            
+        except Exception: 
+            self.statusBar().showMessage('Issue with loading your csv file', 1000)
+            self.statusBar().setStyleSheet("background-color : pink")
+        start = csvdata['ts '].iloc[0]
+        end = csvdata['ts '].iloc[-1]
+        self.label_9.setText(f"SIS Matrix: {start} - {end}")
+        self.this_sys_session_data.sys_dataframe = csvdata.copy()
+        try: 
+
+            self.this_sys_session_data.sys_df = csvdata[self.this_sys_session_data.col_names].copy()
+            DF = csvdata[self.this_sys_session_data.col_names].copy()
+
+        except Exception as InvalidColumn:
+            self.statusBar().showMessage(f'Issue with loading your csv file: {InvalidColumn}', 3000)
+            self.statusBar().setStyleSheet("background-color : pink")
+
+        self.this_sys_session_data.sys_df.columns = ['_id','ts','Pression','Phase3','DM','DDM','DFlux','RR']
+        DF.columns = ['_id','ts','Pression','Phase3','DM','DDM','DFlux','RR']
+        self.data_process_prog_bar_3.setValue(45)
+        
+        
+        DF['NP']=0
+        Compteur = 1
+        for i in range(len(DF)-1): 
+            if (DF["Phase3"][i] == 1) & (DF["Phase3"][i+1] == 0):
+                DF["NP"][i] = Compteur
+                Compteur = Compteur + 1
+            else:
+                DF["NP"][i]=Compteur
+        DF["NP"][len(DF)-1]=DF["NP"][len(DF)-2]
+        self.data_process_prog_bar_3.setValue(70)
+
+        self.this_sys_session_data.sys_df =  DF.copy()
+        filt = np.where((DF['Pression'] >= 0.2) & (DF['Phase3'] == 1))
+        ddf = DF.loc[filt[0]]
+        self.this_sys_session_data.sys_ddf = ddf.copy()
+        
+        Fin = ddf["NP"].max() - 1
+        self.this_sys_session_data.fin = Fin
+ 
+        self.data_process_prog_bar_3.setValue(85)
+        
+        sis_algo = sis.SIS()
+        sys_df = sis_algo.get_sys_matrix(fin_df= self.this_sys_session_data.fin,
+        df= self.this_sys_session_data.sys_df, 
+        ddf= self.this_sys_session_data.sys_ddf)
+
+        sys_model = dataframeTable.DataFrameModel(sys_df)
+        self.matrixView.setModel(sys_model)
+        self.matrixView.horizontalHeader().setStretchLastSection(True)
+        self.matrixView.horizontalHeader().setSectionResizeMode(
+            QHeaderView.Stretch)
+
+        self.data_process_prog_bar_3.setValue(100)
+
+        self.statusBar().showMessage("Data successfully processed.")
+        self.statusBar().setStyleSheet("background-color : green")
+
+    # =========================== Press Functions End ======================================================================= #
     # ========================================= MAIN WINDOW APP START ========================================================= #
 
 
