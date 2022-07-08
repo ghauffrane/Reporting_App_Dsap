@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1508</width>
+    <width>1516</width>
     <height>976</height>
    </rect>
   </property>
@@ -39,6 +39,9 @@
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(248, 248, 246);</string>
+   </property>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -69,11 +72,14 @@
        <widget class="QFrame" name="side_menu_header">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>10</x>
           <y>0</y>
           <width>211</width>
-          <height>44</height>
+          <height>61</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -84,10 +90,10 @@
         <widget class="QLabel" name="label_7">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>20</x>
            <y>10</y>
-           <width>211</width>
-           <height>31</height>
+           <width>161</width>
+           <height>51</height>
           </rect>
          </property>
          <property name="font">
@@ -98,7 +104,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(243, 243, 243);</string>
+          <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
           <string>D-SAP</string>
@@ -112,9 +118,9 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>190</y>
-          <width>221</width>
-          <height>131</height>
+          <y>130</y>
+          <width>211</width>
+          <height>141</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
@@ -148,9 +154,10 @@
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(20, 75, 95);
+            <string notr="true">background-color: rgb(67, 116, 147);
+color: rgb(255, 255, 255);
 border-radius:5px;
-color: rgb(255, 255, 255);</string>
+</string>
            </property>
            <property name="text">
             <string>Pressing Reporting</string>
@@ -172,7 +179,7 @@ color: rgb(255, 255, 255);</string>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(20, 75, 95);
+            <string notr="true">background-color: rgb(67, 116, 147);
 border-radius:5px;
 color: rgb(255, 255, 255);</string>
            </property>
@@ -196,7 +203,7 @@ color: rgb(255, 255, 255);</string>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(20, 75, 95);
+            <string notr="true">background-color: rgb(67, 116, 147);
 border-radius:5px;
 color: rgb(255, 255, 255);</string>
            </property>
@@ -214,13 +221,13 @@ color: rgb(255, 255, 255);</string>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(20, 75, 95);
+            <string notr="true">background-color: rgb(67, 116, 147);
 border-radius:5px;
 color: rgb(255, 255, 255);
 padding: 3px;</string>
            </property>
            <property name="text">
-            <string>SYS</string>
+            <string>SIS</string>
            </property>
           </widget>
          </item>
@@ -257,7 +264,7 @@ padding: 3px;</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(20, 75, 95, 87);
+            <string notr="true">background-color: rgb(67, 116, 147);
 border-radius:5px;
 color: rgb(255, 255, 255);</string>
            </property>
@@ -275,7 +282,7 @@ color: rgb(255, 255, 255);</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(20, 75, 95, 87);
+            <string notr="true">background-color: rgb(67, 116, 147);
 border-radius:5px;
 color: rgb(255, 255, 255);</string>
            </property>
@@ -290,9 +297,9 @@ color: rgb(255, 255, 255);</string>
         <property name="geometry">
          <rect>
           <x>-50</x>
-          <y>90</y>
-          <width>281</width>
-          <height>41</height>
+          <y>70</y>
+          <width>271</width>
+          <height>31</height>
          </rect>
         </property>
         <property name="text">
@@ -329,13 +336,13 @@ color: rgb(255, 255, 255);</string>
         <property name="geometry">
          <rect>
           <x>220</x>
-          <y>40</y>
+          <y>0</y>
           <width>2281</width>
-          <height>911</height>
+          <height>1001</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">background-color: rgb(248, 248, 246);</string>
         </property>
         <widget class="QWidget" name="pressing_widget">
          <property name="sizePolicy">
@@ -349,8 +356,8 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1301</width>
-            <height>911</height>
+            <width>1311</width>
+            <height>971</height>
            </rect>
           </property>
           <property name="sizePolicy">
@@ -360,7 +367,7 @@ color: rgb(255, 255, 255);</string>
            </sizepolicy>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(4, 15, 19);</string>
+           <string notr="true">background-color: rgb(248, 248, 246);</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -398,7 +405,7 @@ color: rgb(255, 255, 255);</string>
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                <string notr="true">color: rgb(7, 30, 38);
 font: 75 11pt &quot;Verdana&quot;;</string>
                </property>
                <property name="text">
@@ -410,14 +417,14 @@ font: 75 11pt &quot;Verdana&quot;;</string>
               <widget class="QPushButton" name="browse">
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(20, 75, 95);
-border-radius:5px;
+                <string notr="true">background-color: rgb(118, 155, 194);
 color: rgb(255, 255, 255);
+border-radius:5px;
 padding: 3px; </string>
                </property>
                <property name="text">
@@ -438,9 +445,8 @@ padding: 3px; </string>
              <item>
               <widget class="QLineEdit" name="textBrowser">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(7, 30, 38);
-border-radius:5px;
-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(237, 236, 232);
+color: rgb(7, 30, 38);</string>
                </property>
               </widget>
              </item>
@@ -453,7 +459,7 @@ color: rgb(255, 255, 255);</string>
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(20, 75, 95);
+                <string notr="true">background-color: rgb(118, 155, 194);
 border-radius:5px;
 color: rgb(255, 255, 255);
 padding: 5px; </string>
@@ -484,7 +490,7 @@ padding: 5px; </string>
                <property name="styleSheet">
                 <string notr="true">QProgressBar{
 	border-radius:10px;
-	background-color: rgb(7, 30, 38);
+	background-color: rgb(237, 236, 232);
 }
 
 
@@ -532,8 +538,17 @@ QProgressBar::chunk{
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>Verdana</family>
+                 <pointsize>11</pointsize>
+                 <weight>9</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                <string notr="true">color: rgb(7, 30, 38);
 font: 75 11pt &quot;Verdana&quot;;</string>
                </property>
                <property name="text">
@@ -559,9 +574,9 @@ font: 75 11pt &quot;Verdana&quot;;</string>
                 <bool>false</bool>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(7, 30, 38);
+                <string notr="true">background-color: rgb(237, 236, 232);
 border-radius:5px;
-color: rgb(255, 255, 255);</string>
+color: rgb(7, 30, 38);</string>
                </property>
                <property name="currentText">
                 <string>Ubuntu</string>
@@ -576,8 +591,17 @@ color: rgb(255, 255, 255);</string>
              </item>
              <item>
               <widget class="QLabel" name="label4">
+               <property name="font">
+                <font>
+                 <family>Verdana</family>
+                 <pointsize>11</pointsize>
+                 <weight>9</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                <string notr="true">color: rgb(7, 30, 38);
 font: 75 11pt &quot;Verdana&quot;;</string>
                </property>
                <property name="text">
@@ -599,9 +623,9 @@ font: 75 11pt &quot;Verdana&quot;;</string>
                 <enum>Qt::LeftToRight</enum>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(7, 30, 38);
+                <string notr="true">background-color: rgb(237, 236, 232);
 border-radius:5px;
-color: rgb(255, 255, 255);</string>
+color: rgb(7, 30, 38);</string>
                </property>
                <property name="currentText">
                 <string>Ubuntu</string>
@@ -624,8 +648,17 @@ color: rgb(255, 255, 255);</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>Verdana</family>
+                 <pointsize>11</pointsize>
+                 <weight>9</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                <string notr="true">color: rgb(7, 30, 38);
 font: 75 11pt &quot;Verdana&quot;;</string>
                </property>
                <property name="text">
@@ -636,9 +669,9 @@ font: 75 11pt &quot;Verdana&quot;;</string>
              <item>
               <widget class="QListWidget" name="ListWidget">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(7, 30, 38);
+                <string notr="true">background-color: rgb(237, 236, 232);
 border-radius:5px;
-color: rgb(255, 255, 255);</string>
+color: rgb(7, 30, 38);</string>
                </property>
                <property name="sizeAdjustPolicy">
                 <enum>QAbstractScrollArea::AdjustToContents</enum>
@@ -650,42 +683,7 @@ color: rgb(255, 255, 255);</string>
              </item>
             </layout>
            </item>
-           <item>
-            <widget class="QPushButton" name="excelReportBTN">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(20, 75, 95);
-border-radius:5px;
-color: rgb(255, 255, 255);
-padding: 3px; </string>
-             </property>
-             <property name="text">
-              <string>    Make Cycle Report in Excel      </string>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>Assets/sheets.png</normaloff>Assets/sheets.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
+           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
             <widget class="QPushButton" name="pdfReportBTN">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -703,7 +701,7 @@ padding: 3px; </string>
               <bool>false</bool>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(20, 75, 95);
+              <string notr="true">background-color: rgb(118, 155, 194);
 border-radius:5px;
 color: rgb(255, 255, 255);
 padding: 3px; </string>
@@ -714,6 +712,41 @@ padding: 3px; </string>
              <property name="icon">
               <iconset>
                <normaloff>Assets/pdf.png</normaloff>Assets/pdf.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>22</width>
+               <height>22</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+            <widget class="QPushButton" name="excelReportBTN">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(118, 155, 194);
+border-radius:5px;
+color: rgb(255, 255, 255);
+padding: 3px; </string>
+             </property>
+             <property name="text">
+              <string>    Make Cycle Report in Excel      </string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>Assets/sheets.png</normaloff>Assets/sheets.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -738,8 +771,8 @@ padding: 3px; </string>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(7, 30, 38);
-color: rgb(255, 255, 255);
+              <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(7, 30, 38);
 border-radius: 8px; 
 </string>
              </property>
@@ -756,6 +789,9 @@ border-radius: 8px;
               </size>
              </property>
              <widget class="QWidget" name="tab">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 255, 255);</string>
+              </property>
               <attribute name="icon">
                <iconset>
                 <normaloff>Assets/button.png</normaloff>Assets/button.png</iconset>
@@ -802,7 +838,7 @@ border-radius: 8px;
                     </font>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color: rgb(20, 75, 95);
+                    <string notr="true">background-color: rgba(183, 90, 226, 237);
 border-radius:5px;
 color: rgb(255, 255, 255);
 padding: 5px; </string>
@@ -845,8 +881,7 @@ padding: 5px; </string>
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">background-color: rgb(7, 30, 38);
-
+                  <string notr="true">background-color: rgb(248, 248, 246);
 </string>
                  </property>
                  <property name="text">
@@ -895,7 +930,9 @@ padding: 5px; </string>
                 <item row="0" column="2">
                  <widget class="QLabel" name="lbl_cycle_duration">
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
+font: 13pt &quot;Ubuntu&quot;;</string>
                   </property>
                   <property name="text">
                    <string>Press Cycle (Start - Stop)</string>
@@ -917,8 +954,10 @@ padding: 5px; </string>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);
+                   <string notr="true">color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
 font: 13pt &quot;Ubuntu&quot;;
+
 </string>
                   </property>
                   <property name="text">
@@ -932,7 +971,9 @@ font: 13pt &quot;Ubuntu&quot;;
                 <item row="0" column="1">
                  <widget class="QLabel" name="lbl_cycle_nbr_value">
                   <property name="styleSheet">
-                   <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 16pt &quot;Ubuntu&quot;;
+color: rgb(7, 30, 38);
+background-color: rgb(237, 236, 232);	</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -945,8 +986,9 @@ font: 13pt &quot;Ubuntu&quot;;
                 <item row="0" column="3">
                  <widget class="QLabel" name="lbl_cycle_duration_value">
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;
-</string>
+                   <string notr="true">color: rgb(7, 30, 38);
+font: 13pt &quot;Ubuntu&quot;;
+background-color: rgb(237, 236, 232);</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -969,7 +1011,7 @@ font: 13pt &quot;Ubuntu&quot;;
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
                 <property name="spacing">
-                 <number>20</number>
+                 <number>5</number>
                 </property>
                 <property name="leftMargin">
                  <number>7</number>
@@ -992,7 +1034,10 @@ font: 13pt &quot;Ubuntu&quot;;
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
+padding: 3px;</string>
                   </property>
                   <property name="text">
                    <string>Inside membrane pressure</string>
@@ -1012,7 +1057,7 @@ font: 13pt &quot;Ubuntu&quot;;
                   </property>
                   <property name="styleSheet">
                    <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
-background-color: rgb(20, 75, 95);
+background-color: rgb(237, 236, 232);
 color: rgb(151, 64, 191);
 border-radius:5px;
 
@@ -1041,7 +1086,11 @@ border-radius:5px;
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
+padding: 3px;
+</string>
                   </property>
                   <property name="text">
                    <string>Extracted must quantity</string>
@@ -1061,9 +1110,10 @@ border-radius:5px;
                   </property>
                   <property name="styleSheet">
                    <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
-background-color: rgb(20, 75, 95);
+background-color: rgb(237, 236, 232);
 color: rgb(151, 64, 191);
-border-radius:5px;</string>
+border-radius:5px;
+</string>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
@@ -1083,13 +1133,13 @@ border-radius:5px;</string>
                 <rect>
                  <x>470</x>
                  <y>200</y>
-                 <width>231</width>
+                 <width>235</width>
                  <height>281</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <property name="spacing">
-                 <number>20</number>
+                 <number>5</number>
                 </property>
                 <property name="leftMargin">
                  <number>7</number>
@@ -1112,7 +1162,10 @@ border-radius:5px;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
+padding: 3px;</string>
                   </property>
                   <property name="text">
                    <string>Press net weight</string>
@@ -1132,9 +1185,10 @@ border-radius:5px;</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
-background-color: rgb(20, 75, 95);
+background-color: rgb(237, 236, 232);
 color: rgb(151, 64, 191);
-border-radius:5px;</string>
+border-radius:5px;
+</string>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
@@ -1156,7 +1210,10 @@ border-radius:5px;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
+padding: 3px;</string>
                   </property>
                   <property name="text">
                    <string>Must extraction percentage</string>
@@ -1176,9 +1233,10 @@ border-radius:5px;</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
-background-color: rgb(20, 75, 95);
+background-color: rgb(237, 236, 232);
 color: rgb(151, 64, 191);
-border-radius:5px;</string>
+border-radius:5px;
+</string>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
@@ -1197,14 +1255,14 @@ border-radius:5px;</string>
                <property name="geometry">
                 <rect>
                  <x>790</x>
-                 <y>190</y>
+                 <y>200</y>
                  <width>321</width>
                  <height>291</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <property name="spacing">
-                 <number>20</number>
+                 <number>5</number>
                 </property>
                 <property name="leftMargin">
                  <number>7</number>
@@ -1227,7 +1285,10 @@ border-radius:5px;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
+padding: 3px;</string>
                   </property>
                   <property name="text">
                    <string>Sliding average of press net weight</string>
@@ -1256,9 +1317,10 @@ border-radius:5px;</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
-background-color: rgb(20, 75, 95);
+background-color: rgb(237, 236, 232);
 color: rgb(151, 64, 191);
-border-radius:5px;</string>
+border-radius:5px;
+</string>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
@@ -1283,7 +1345,11 @@ border-radius:5px;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 13pt &quot;Ubuntu&quot;;
+color: rgb(7, 30, 38);
+background-color: rgba(183, 90, 226, 237);
+padding: 3px;
+</string>
                   </property>
                   <property name="text">
                    <string>Loaded product quantity</string>
@@ -1303,9 +1369,10 @@ border-radius:5px;</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">font: 75 22pt &quot;URW Bookman L&quot;;
-background-color: rgb(20, 75, 95);
+background-color: rgb(237, 236, 232);
 color: rgb(151, 64, 191);
-border-radius:5px;</string>
+border-radius:5px;
+</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -1397,63 +1464,6 @@ border-radius:5px;</string>
          </widget>
         </widget>
         <widget class="QWidget" name="sys_widget">
-         <widget class="QWidget" name="verticalLayoutWidget_6">
-          <property name="geometry">
-           <rect>
-            <x>100</x>
-            <y>120</y>
-            <width>1101</width>
-            <height>161</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_7">
-           <item>
-            <widget class="QLabel" name="label_9">
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color:rgb(238, 238, 236);
-padding: 3px; </string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTableView" name="matrixView">
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(211, 215, 207);</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="horizontalLayoutWidget_2">
-          <property name="geometry">
-           <rect>
-            <x>100</x>
-            <y>390</y>
-            <width>1101</width>
-            <height>491</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_7">
-           <item>
-            <widget class="QListWidget" name="listWidget"/>
-           </item>
-           <item>
-            <widget class="QTableWidget" name="DFWidget"/>
-           </item>
-          </layout>
-         </widget>
          <widget class="QLabel" name="label_11">
           <property name="geometry">
            <rect>
@@ -1482,12 +1492,12 @@ padding: 3px; </string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1311</width>
-            <height>911</height>
+            <width>1301</width>
+            <height>951</height>
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(4, 15, 19);</string>
+           <string notr="true">background-color: rgb(248, 248, 246);</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -1500,11 +1510,11 @@ padding: 3px; </string>
             <rect>
              <x>10</x>
              <y>40</y>
-             <width>1221</width>
+             <width>1239</width>
              <height>42</height>
             </rect>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="0,1,5,1,0">
+           <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="0,1,0,1,0">
             <property name="spacing">
              <number>14</number>
             </property>
@@ -1532,7 +1542,7 @@ padding: 3px; </string>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">color: rgb(255, 255, 255);
+               <string notr="true">color: rgb(7, 30, 38);
 font: 75 11pt &quot;Verdana&quot;;</string>
               </property>
               <property name="text">
@@ -1549,7 +1559,7 @@ font: 75 11pt &quot;Verdana&quot;;</string>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(20, 75, 95);
+               <string notr="true">background-color: rgb(118, 155, 194);
 border-radius:5px;
 color: rgb(255, 255, 255);
 padding: 3px; </string>
@@ -1571,10 +1581,15 @@ padding: 3px; </string>
             </item>
             <item>
              <widget class="QLineEdit" name="textBrowser_3">
+              <property name="minimumSize">
+               <size>
+                <width>640</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(7, 30, 38);
-border-radius:5px;
-color: rgb(238, 238, 236);</string>
+               <string notr="true">background-color: rgb(237, 236, 232);
+color: rgb(7, 30, 38);</string>
               </property>
              </widget>
             </item>
@@ -1587,7 +1602,7 @@ color: rgb(238, 238, 236);</string>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(20, 75, 95);
+               <string notr="true">background-color: rgb(118, 155, 194);
 border-radius:5px;
 color: rgb(255, 255, 255);
 padding: 5px; </string>
@@ -1618,7 +1633,7 @@ padding: 5px; </string>
               <property name="styleSheet">
                <string notr="true">QProgressBar{
 	border-radius:10px;
-	background-color: rgb(7, 30, 38);
+	background-color: rgb(237, 236, 232);
 }
 
 
@@ -1641,11 +1656,97 @@ QProgressBar::chunk{
             </item>
            </layout>
           </widget>
+          <widget class="QWidget" name="verticalLayoutWidget_7">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>400</y>
+             <width>1101</width>
+             <height>341</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <widget class="QLabel" name="label_12">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(183, 90, 226, 237);
+color: rgb(7, 30, 38);
+padding: 3px; </string>
+              </property>
+              <property name="text">
+               <string>Historique matrices  SIS</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableView" name="tableView">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(248, 248, 246);
+color: rgb(7, 30, 38);</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableView" name="matrixView_2">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(237, 236, 232);
+color: rgb(7, 30, 38);</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="verticalLayoutWidget_6">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>130</y>
+             <width>1101</width>
+             <height>161</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_9">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(183, 90, 226, 237);
+color: rgb(7, 30, 38);
+padding: 3px; </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableView" name="matrixView">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(237, 236, 232);
+color: rgb(7, 30, 38);</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
-         <zorder>frame_2</zorder>
-         <zorder>verticalLayoutWidget_6</zorder>
-         <zorder>horizontalLayoutWidget_2</zorder>
-         <zorder>label_11</zorder>
         </widget>
        </widget>
       </widget>

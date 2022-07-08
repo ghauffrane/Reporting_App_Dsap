@@ -1,3 +1,4 @@
+from pkgutil import ImpImporter
 import pandas as pd
 import sys
 import os
@@ -8,27 +9,29 @@ from pathlib import Path
 path = Path(thisDir)
 sys.path.append(str(path.parent.absolute()))
 
+class FileUnsupported(Exception): 
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message
+
 class LoadData:
     def __init__(self) -> None:
         self.columns = []
         self.status_indices = []
-        self.orig_variables = ["4300 Analog values - Inside membrane pressure", 
-                        "16014 Computation values - press net weight", 
-                        "16016 Computation values - sliding average of press net weight", 
-                        "16026 Computation values - extracted must quantity", 
-                        "16028 Computation values - loaded product quantity", 
-                        "16034 Computation values - must extraction percentage"]
-        self.existing_variables = []
-
 
     def load_dt(self, data_path):
+
         if data_path.endswith('.csv'): 
             data = pd.read_csv(data_path, sep = ";", decimal = ",", low_memory=False)
+            self.columns = list(data.columns)
+            return data
+            
         elif data_path.endswith('.xlsx'): 
             data = pd.read_excel(data_path)
-        self.columns = list(data.columns)
+            self.columns = list(data.columns)
+            return data
 
-        return data
+        
 
     def get_status_columns(self):
         
@@ -55,10 +58,13 @@ class LoadData:
 
         return DF
 
-    def check_variables(self):
-
-        for vr in self.orig_variables: 
+    def check_variables(self, colnames2check: list):
+        existing_variables = []
+        NotFoundColumns = []
+        for vr in colnames2check: 
             if vr in self.columns:
-                self.existing_variables.append(vr)
+                existing_variables.append(vr)
+            else:
+                NotFoundColumns.append(vr) 
 
-        return self.existing_variables      
+        return existing_variables, NotFoundColumns   

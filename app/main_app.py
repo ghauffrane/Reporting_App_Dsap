@@ -1,22 +1,23 @@
 # ========================================= IMPORTS ==================================================================== #
-import csv
 import sys
 import os
 import time
 import numpy as np
+import json
 from functools import partial
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPixmap, QMovie, QIcon
 from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog, QMainWindow, QSplashScreen, QHeaderView
 from PyQt5.uic import loadUi
-from core import sis
+from core.SIS import sis
 from core.pressurage import load 
 from core.pressurage import cycles_module
 from core.pressurage import MetricsCharts
 from core.pressurage import MetricsTable
 from core.pressurage import press_schemas
 from core import dataframeTable
+from custom_exceptions import NotFoundColumn, FileUnsupported
 import openpyxl
 from openpyxl import load_workbook
 import matplotlib.pyplot as plt
@@ -79,19 +80,31 @@ class MainWindow(QMainWindow):
     
     def go_sys_widget(self): 
         self.stacked_widget.setCurrentIndex(3)
+        self.label_9.setText(f"SIS Matrix")
+        self.history()
+        
     # =========================== Stacked Widget Redirections End ============================================================= #
 
     # =========================== Press Functions Start ======================================================================= #
     
     def browsefiles(self, clickedBrowse):
-        fname=QFileDialog.getOpenFileName(self, 'Open file', 'CSV (*.csv *.tsv)')  
+        fname=QFileDialog.getOpenFileName(self, 'Open file', 'CSV (*.csv *.tsv)')
+
+        try: 
+            if (fname[0].endswith('.csv')==False) and (fname[0].endswith('.xlsx')==False): 
+                raise FileUnsupported(message="This file is neither an excel nor a csv. This file extension is not supported.")
+            else: 
+                if clickedBrowse == "browse":
+                    self.textBrowser.setText(fname[0])
+                    self.file_path =  fname[0]
+                elif clickedBrowse == "browse_3":
+                    self.textBrowser_3.setText(fname[0])
+                    self.sys_data_path = fname[0]
+
+        except FileUnsupported as funs: 
+            self.statusBar().showMessage(f"{funs.message}")
+            self.statusBar().setStyleSheet("background-color : pink")
         
-        if clickedBrowse == "browse":
-            self.textBrowser.setText(fname[0])
-            self.file_path =  fname[0]
-        elif clickedBrowse == "browse_3":
-            self.textBrowser_3.setText(fname[0])
-            self.sys_data_path = fname[0]
     
     def processData(self):
 
@@ -112,14 +125,20 @@ class MainWindow(QMainWindow):
         try: 
             csvdata = csvloader.load_dt(self.this_session_data.chosen_file_path)
             self.this_session_data.dataframe = csvdata
-            self.this_session_data.existing_vars = csvloader.check_variables()
+            self.this_session_data.existing_vars, self.this_session_data.NotFoundVars = csvloader.check_variables(self.this_session_data.required_variables)
+            if (self.this_session_data.NotFoundVars != None )and (self.this_session_data.existing_vars != self.this_session_data.required_variables): 
+                raise NotFoundColumn(self.this_session_data.NotFoundVars, "Some columns are missing in you data:  ")
+            
             self.data_process_prog_bar.setValue(45)
             
-        except Exception: 
-            self.statusBar().showMessage('Issue with loading your csv file', 1000)
+        except NotFoundColumn as NFCol: 
+            self.statusBar().showMessage(f"{NFCol.message}")
+            self.statusBar().setStyleSheet("background-color : pink")
+        except: 
+            self.statusBar().showMessage(f"A problem occured while loading this data." )
             self.statusBar().setStyleSheet("background-color : pink")
         
-        # ============================================================================================================ #
+        # ===================================To be refactored into a funct in a helpers folder ======================= #
         file_name = self.this_session_data.chosen_file_path.split("/")[-1].split(".")[0]
         self.this_session_data.dir_path_excel = os.path.join("./press_reports/excel_reports/", file_name)
         self.this_session_data.dir_path_pdf = os.path.join("./press_reports/pdf_reports/", file_name)
@@ -315,68 +334,108 @@ class MainWindow(QMainWindow):
         
         try: 
             csvdata = csvloader2.load_dt(self.this_sys_session_data.chosen_file_path)
+            start = csvdata['ts '].iloc[0]
+            end = csvdata['ts '].iloc[-1]
+            # data_date = f"{start}_{end}".replace("/", "-").replace(":", "|")
+            data_date = f"{start} - {end}"
+            self.this_sys_session_data.existing_vars, self.this_sys_session_data.NotFoundVars = csvloader2.check_variables(self.this_sys_session_data.required_variables)
+            if (self.this_sys_session_data.NotFoundVars != None )and (self.this_sys_session_data.existing_vars != self.this_sys_session_data.required_variables): 
+                raise NotFoundColumn(self.this_sys_session_data.NotFoundVars, "Some columns are missing in you data:  ")
+                
+            self.data_process_prog_bar.setValue(45)
+
+            self.label_9.setText(f"SIS Matrix: {start} - {end}")
+            self.this_sys_session_data.sys_dataframe = csvdata.copy()
+
+            self.this_sys_session_data.sys_df = csvdata[self.this_sys_session_data.existing_vars].copy()
+            DF = csvdata[self.this_sys_session_data.existing_vars].copy()
+
+            self.this_sys_session_data.sys_df.columns = ['_id','ts','Pression','Phase3','DM','DDM','DFlux','RR']
+            DF.columns = ['_id','ts','Pression','Phase3','DM','DDM','DFlux','RR']
+            self.data_process_prog_bar_3.setValue(45)
             
-        except Exception: 
-            self.statusBar().showMessage('Issue with loading your csv file', 1000)
+            
+            DF['NP']=0
+            Compteur = 1
+            for i in range(len(DF)-1): 
+                if (DF["Phase3"][i] == 1) & (DF["Phase3"][i+1] == 0):
+                    DF["NP"][i] = Compteur
+                    Compteur = Compteur + 1
+                else:
+                    DF["NP"][i]=Compteur
+            DF["NP"][len(DF)-1]=DF["NP"][len(DF)-2]
+            self.data_process_prog_bar_3.setValue(70)
+
+            self.this_sys_session_data.sys_df =  DF.copy()
+            filt = np.where((DF['Pression'] >= 0.2) & (DF['Phase3'] == 1))
+            ddf = DF.loc[filt[0]]
+            self.this_sys_session_data.sys_ddf = ddf.copy()
+            
+            Fin = ddf["NP"].max() - 1
+            self.this_sys_session_data.fin = Fin
+    
+            self.data_process_prog_bar_3.setValue(85)
+            
+            sis_algo = sis.SIS()
+            sys_df, update_status = sis_algo.get_sys_matrix(fin_df= self.this_sys_session_data.fin,
+            df= self.this_sys_session_data.sys_df, 
+            ddf= self.this_sys_session_data.sys_ddf)
+            sys_model = dataframeTable.DataFrameModel(sys_df)
+            self.matrixView.setModel(sys_model)
+            self.matrixView.horizontalHeader().setStretchLastSection(True)
+            self.matrixView.horizontalHeader().setSectionResizeMode(
+                QHeaderView.Stretch)
+
+            if update_status: 
+                sis_algo.save_update_matrix(sys_df, data_date, data_filepath=self.this_sys_session_data.chosen_file_path)
+                self.statusBar().showMessage("Data successfully processed: update matrix computed and saved!")
+                self.statusBar().setStyleSheet("background-color : green")
+            elif update_status == False: 
+                self.statusBar().showMessage("This matrix is the same as the last matrix updated. Choose different data to process.")
+                self.statusBar().setStyleSheet("background-color : pink")
+
+            self.data_process_prog_bar_3.setValue(100)
+
+            self.history()
+
+        except NotFoundColumn as NFCol:
+            self.statusBar().showMessage(f"{NFCol.message}. Please load data that contains this column to continue.")
             self.statusBar().setStyleSheet("background-color : pink")
-        start = csvdata['ts '].iloc[0]
-        end = csvdata['ts '].iloc[-1]
-        self.label_9.setText(f"SIS Matrix: {start} - {end}")
-        self.this_sys_session_data.sys_dataframe = csvdata.copy()
-        try: 
+        # except Exception as e: 
+        #     self.statusBar().showMessage(f"A problem occured while loading this data:  {e}")
+        #     self.statusBar().setStyleSheet("background-color : pink")
 
-            self.this_sys_session_data.sys_df = csvdata[self.this_sys_session_data.col_names].copy()
-            DF = csvdata[self.this_sys_session_data.col_names].copy()
 
-        except Exception as InvalidColumn:
-            self.statusBar().showMessage(f'Issue with loading your csv file: {InvalidColumn}', 3000)
-            self.statusBar().setStyleSheet("background-color : pink")
-
-        self.this_sys_session_data.sys_df.columns = ['_id','ts','Pression','Phase3','DM','DDM','DFlux','RR']
-        DF.columns = ['_id','ts','Pression','Phase3','DM','DDM','DFlux','RR']
-        self.data_process_prog_bar_3.setValue(45)
-        
-        
-        DF['NP']=0
-        Compteur = 1
-        for i in range(len(DF)-1): 
-            if (DF["Phase3"][i] == 1) & (DF["Phase3"][i+1] == 0):
-                DF["NP"][i] = Compteur
-                Compteur = Compteur + 1
-            else:
-                DF["NP"][i]=Compteur
-        DF["NP"][len(DF)-1]=DF["NP"][len(DF)-2]
-        self.data_process_prog_bar_3.setValue(70)
-
-        self.this_sys_session_data.sys_df =  DF.copy()
-        filt = np.where((DF['Pression'] >= 0.2) & (DF['Phase3'] == 1))
-        ddf = DF.loc[filt[0]]
-        self.this_sys_session_data.sys_ddf = ddf.copy()
-        
-        Fin = ddf["NP"].max() - 1
-        self.this_sys_session_data.fin = Fin
- 
-        self.data_process_prog_bar_3.setValue(85)
-        
-        sis_algo = sis.SIS()
-        sys_df = sis_algo.get_sys_matrix(fin_df= self.this_sys_session_data.fin,
-        df= self.this_sys_session_data.sys_df, 
-        ddf= self.this_sys_session_data.sys_ddf)
-
-        sys_model = dataframeTable.DataFrameModel(sys_df)
-        self.matrixView.setModel(sys_model)
-        self.matrixView.horizontalHeader().setStretchLastSection(True)
-        self.matrixView.horizontalHeader().setSectionResizeMode(
+    def history(self): 
+        with open("./core/SIS/sis_metadata.json", "r") as f: 
+            metadata = json.loads(f.read())
+        if len(metadata["matrix_history"])>0:
+            history_table = pd.DataFrame.from_dict(metadata["matrix_history"])
+            history_table_view = history_table.drop(["update_matrix"], axis = 1)
+            history_model = dataframeTable.DataFrameModel(history_table_view)
+            self.tableView.setModel(history_model)
+            self.tableView.horizontalHeader().setStretchLastSection(True)
+            self.tableView.horizontalHeader().setSectionResizeMode(
+                QHeaderView.Stretch)
+            self.tableView.clicked.connect(partial(self.on_click_table, df = history_table))
+    
+    def on_click_table(self, df):    
+        # when a row is clicked the matrix is displayed below
+        currentindex = self.tableView.selectionModel().currentIndex()
+        selected_row = currentindex.row()
+        the_matrix = df.iloc[selected_row]
+        the_matrix_df = pd.DataFrame.from_dict(the_matrix["update_matrix"])
+        matrix_model = dataframeTable.DataFrameModel(the_matrix_df)
+        self.matrixView_2.setModel(matrix_model)
+        self.matrixView_2.horizontalHeader().setStretchLastSection(True)
+        self.matrixView_2.horizontalHeader().setSectionResizeMode(
             QHeaderView.Stretch)
 
-        self.data_process_prog_bar_3.setValue(100)
 
-        self.statusBar().showMessage("Data successfully processed.")
-        self.statusBar().setStyleSheet("background-color : green")
+
 
     # =========================== Press Functions End ======================================================================= #
     # ========================================= MAIN WINDOW APP START ========================================================= #
-
 
 
 if __name__ == "__main__":

@@ -1,22 +1,24 @@
+from curses import meta
 import pandas as pd
-import numpy as np   
+import numpy as np
+from openpyxl import load_workbook
+from datetime import datetime
+import json
+
 
 class SIS:
 
     def __init__(self) -> None:
-        self.Class = pd.DataFrame({'X': [0.0, 0.0, 0.0],
-                    'Y': [0.0, 0.0, 0.0],
-                    'Z': [0.0, 0.0, 0.0],
-                    'W': [0.0, 0.0, 0.0],
-                    'ZL': [0.0, 0.0, 0.0],
-                    'ZH': [0.0, 0.0, 0.0],
-                    'FL': [0.0, 0.0, 0.0],
-                    'FH': [0.0, 0.0, 0.0],
-                     'Cpt': [0.0, 0.0, 0.0]})
+
+        with open("./core/SIS/sis_metadata.json", "r") as f: 
+            self.metadata = json.loads(f.read())
+        
+        self.last_matrix = self.get_last_matrix()
+        
     
     def get_sys_matrix(self, fin_df, df, ddf):
         
-              
+        self.Class = self.last_matrix.copy()  
         for i in range(fin_df):
             
             rslt = ddf.loc[ddf['NP'] == i+1]
@@ -46,18 +48,44 @@ class SIS:
                 self.Class['FL'][Classe] = (self.Class['Cpt'][Classe] * self.Class['FL'][Classe] + FLL)/ (self.Class['Cpt'][Classe] + 1)
                 self.Class['FH'][Classe] = (self.Class['Cpt'][Classe] * self.Class['FH'][Classe] + FHH)/ (self.Class['Cpt'][Classe] + 1)
                 self.Class['Cpt'][Classe] = self.Class['Cpt'][Classe] + 1
-                update_costants = True
+                
+        self.Class = self.Class.round(6)
+        
+        if np.array_equal(np.array(self.Class[["X", "Y" , "Z", "W", "ZL", "ZH", "FL", "FH"]]), np.array(self.last_matrix[["X", "Y" , "Z", "W", "ZL", "ZH", "FL", "FH"]])):
+            update_status = False
+            return self.last_matrix, update_status
+        
+        else: 
+            update_status = True
+            return self.Class, update_status
+            
 
-        return self.Class
 
-    def get_clean_data(self):
+    def get_last_matrix(self):
+  
+        if len(self.metadata["matrix_history"]) == 0:
+            last_matrix = pd.DataFrame(self.metadata["default_matrix"])
+        else: 
+            # To be sorted
+            # if len(self.metadata["matrix_history"])> 1:
+            #     sorted_metadata_list = sorted(self.metadata["matrix_history"], key=lambda d: d['creation_time']) 
+            # else:
+            #     sorted_metadata_list = self.metadata["matrix_history"]
+            last_meta = self.metadata["matrix_history"][-1]
 
-        # return original dataframe
-        # return start and end time of the whole press
-        # return df selected by column names
-        # handle non existing column names
-        # rename df
-        # filter rows for press==1
-        # return ddf
-        # return fin variable
-        pass
+            last_matrix = pd.DataFrame(last_meta["update_matrix"])
+        
+        desired_cols = ["X", "Y" , "Z", "W", "ZL", "ZH", "FL", "FH", "Cpt"]
+        last_matrix =last_matrix[desired_cols]
+        return last_matrix.round(6)
+
+
+    def save_update_matrix(self, update_matrix, date: str, data_filepath): 
+
+        update_matrix_metadata = {"creation_time": datetime.now().strftime("%m/%d/%Y, %H:%M:%S"), "data_date": date,
+            "data_filepath": data_filepath , "update_matrix": update_matrix.to_dict()}
+        self.metadata["matrix_history"].append(update_matrix_metadata)
+
+        with open("./core/SIS/sis_metadata.json", "w") as f: 
+            json.dump(self.metadata, f)
+       
