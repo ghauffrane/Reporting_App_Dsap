@@ -38,7 +38,7 @@ class MainWindow(QMainWindow):
         super(MainWindow,self).__init__()
         loadUi("./app1/ui_new.ui",self)
         # self.centralwidget.setLayout(self.horizontalLayout)
-        self.setWindowIcon(QIcon("app\Assets\diagram.png"))
+        self.setWindowIcon(QIcon("app1\Assets\diagram.png"))
         self.Cycles_list.clear()
         self.phases_list.clear()
         self.ListWidget.clear()
