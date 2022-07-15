@@ -2,13 +2,14 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import json
+import os
 
 
 class SIS:
 
     def __init__(self) -> None:
 
-        with open("./core/SIS/sis_metadata.json", "r") as f: 
+        with open(os.path.normpath("./core/SIS/sis_metadata.json"), "r") as f: 
             self.metadata = json.loads(f.read())
         self.last_matrix = self.get_last_matrix()
         
@@ -83,6 +84,6 @@ class SIS:
             "data_filepath": data_filepath , "update_matrix": update_matrix.to_dict()}
         self.metadata["matrix_history"].append(update_matrix_metadata)
 
-        with open("./core/SIS/sis_metadata.json", "w") as f: 
+        with open(os.path.normpath("./core/SIS/sis_metadata.json"), "w") as f: 
             json.dump(self.metadata, f)
        

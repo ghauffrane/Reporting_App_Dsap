@@ -29,7 +29,7 @@ from datetime import datetime
 class SplashScreen(QSplashScreen):
     def __init__(self):
         super(QSplashScreen, self).__init__()
-        loadUi("./new_splash.ui", self)
+        loadUi(os.path.normpath("./new_splash.ui"), self)
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint| QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.move(QApplication.instance().desktop().screen().rect().center() - self.rect().center())
@@ -43,7 +43,7 @@ class SplashScreen(QSplashScreen):
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
-        loadUi("./latest.ui",self)
+        loadUi(os.path.normpath("./latest.ui"),self)
         self.setWindowIcon(QIcon("./Assets/diagram.png"))
         self.centralwidget.setLayout(self.horizontalLayout)
         self.Cycles_list.clear()
@@ -111,7 +111,7 @@ class MainWindow(QMainWindow):
 
         self.data_process_prog_bar.setValue(0)
         self.this_session_data = press_schemas.DataSession()
-        self.this_session_data.chosen_file_path = self.file_path   
+        self.this_session_data.chosen_file_path = os.path.normpath(self.file_path) 
         self.this_session_data.update_current_chart_path = None
         self.this_session_data.pdf_charts_filenames = []
 
@@ -178,7 +178,7 @@ class MainWindow(QMainWindow):
         current_cycle_nbr = int(self.Cycles_list.currentText()) - 1
         variables = [str(x.text()) for x in self.ListWidget.selectedItems()]
         phase = self.phases_list.currentText()
-        img_out_dir = "./tmpImages"
+        img_out_dir = os.path.normpath("./tmpImages")
 
         if len(variables)> 2: 
             self.statusBar().showMessage('You can select a maximum of 2 variables to display in chart.')
@@ -236,7 +236,7 @@ class MainWindow(QMainWindow):
         TableHandler.write_data_excel()
         TableHandler.make_table()
 
-        chart_out_dir = "./press_reports/tmpImages"
+        chart_out_dir = os.path.normpath("./press_reports/tmpImages")
 
         for phase in ["all", "filling", "dewatering", "pressing", "drying"]: 
             wb = load_workbook(TableHandler.output_path)
@@ -288,19 +288,20 @@ class MainWindow(QMainWindow):
         ax.axis('tight')
         ax.axis('off')
         ax.table(cellText=DF.values,colLabels=DF.columns,loc='center')
-        plt.savefig(f"./press_reports/tmpImages/{current_cycle_nbr}_metricsTable.jpeg")
+        savepath = os.path.normpath(f"./press_reports/tmpImages/{current_cycle_nbr}_metricsTable.jpeg")
+        plt.savefig(savepath)
         
-        pdf_path = f'{self.this_session_data.dir_path_pdf}/press_report_cycle{current_cycle_nbr+1}.pdf'
+        pdf_path = os.path.normpath(f'{self.this_session_data.dir_path_pdf}/press_report_cycle{current_cycle_nbr+1}.pdf')
         cnv = canvas.Canvas(pdf_path, pagesize= A4)
         cnv.setTitle(f"press_report_cycle{current_cycle_nbr+1}")
         cnv.setFont('Helvetica-Bold', 16)
-        cnv.drawImage("./Assets/logo_dellToff.jpeg", 10, 720, width = 100, height = 150)
+        cnv.drawImage((os.path.normpath("./Assets/logo_dellToff.jpeg")), 10, 720, width = 100, height = 150)
         cnv.drawString(180, 800, "Machine: PRESSA CONTINUA 1 - 2021")
         cnv.drawString(180, 780, "S/N: 800191200650")
         cnv.drawString(180, 760, "Customer: Leeuwenkuil Vineyards")
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cnv.drawString(30, 700, f"Report: {now}")
-        cnv.drawImage(f"./press_reports/tmpImages/{current_cycle_nbr}_metricsTable.jpeg", 30, 350, width = 500, height = 350)
+        cnv.drawImage(os.path.normpath(f"./press_reports/tmpImages/{current_cycle_nbr}_metricsTable.jpeg"), 30, 350, width = 500, height = 350)
         cnv.setFont('Helvetica-Bold', 12)
         cnv.drawString(300, 10, f"{cnv.getPageNumber()}")
         cnv.showPage()
@@ -317,7 +318,7 @@ class MainWindow(QMainWindow):
         self.statusBar().setStyleSheet("background-color : green")
 
     def CleanUp(self): 
-        images_dir = "./tmpImages"
+        images_dir = os.path.normpath("./tmpImages")
         images_paths = os.listdir(images_dir)
         if len(images_paths)>0: 
             for p in images_paths: 
@@ -328,7 +329,7 @@ class MainWindow(QMainWindow):
     def process_sys_data(self):
         self.data_process_prog_bar_3.setValue(0)
         self.this_sys_session_data = press_schemas.SysDataSession()
-        self.this_sys_session_data.chosen_file_path = self.sys_data_path  
+        self.this_sys_session_data.chosen_file_path = os.path.normpath(self.sys_data_path  )
         self.data_process_prog_bar_3.setValue(5)
         csvloader2 = load.LoadData()
         self.data_process_prog_bar_3.setValue(20)
@@ -408,14 +409,14 @@ class MainWindow(QMainWindow):
         #     self.statusBar().setStyleSheet("background-color : pink")
 
     def get_history_table(self):
-        with open("./core/SIS/sis_metadata.json", "r") as f: 
+        with open(os.path.normpath("./core/SIS/sis_metadata.json"), "r") as f: 
             metadata = json.loads(f.read())
         if len(metadata["matrix_history"])>0:
             history_table = pd.DataFrame.from_dict(metadata["matrix_history"])
             return history_table
 
     def history(self): 
-        with open("./core/SIS/sis_metadata.json", "r") as f: 
+        with open(os.path.normpath("./core/SIS/sis_metadata.json"), "r") as f: 
             metadata = json.loads(f.read())
         if len(metadata["matrix_history"])>0:
             history_table = pd.DataFrame.from_dict(metadata["matrix_history"])
@@ -432,8 +433,6 @@ class MainWindow(QMainWindow):
         ddf = self.get_history_table()
         currentindex = self.tableView.selectionModel().currentIndex()
         selected_row = currentindex.row()
-        print("selected row: ", selected_row)
-        print("length DF history: ", ddf.shape[0])
         the_matrix = ddf.iloc[selected_row - 1]
         the_matrix_df = pd.DataFrame.from_dict(the_matrix["update_matrix"])
         matrix_model = dataframeTable.DataFrameModel(the_matrix_df)

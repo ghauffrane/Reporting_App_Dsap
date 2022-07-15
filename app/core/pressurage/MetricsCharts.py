@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd
 import numpy as np
+import os
 
 class Charts: 
     def __init__(self,  cycle_nbr, cycle_data, existing_variables):
@@ -62,11 +63,11 @@ class Charts:
         plt.gcf().autofmt_xdate()
         #plt.subplots_adjust(bottom= 0.1, left = 0.1)
         ax.legend(loc = "upper left")
-        
-        plt.savefig(f"{output_dir}/{plot_label} - phase: {phase} - cycle: {self.cycle_nbr}.png")
+        savepath = os.path.normpath(f"{output_dir}/{plot_label} - phase: {phase} - cycle: {self.cycle_nbr}.png")
+        plt.savefig(savepath)
         plt.close()
         
-        return f"{output_dir}/{plot_label} - phase: {phase} - cycle: {self.cycle_nbr}.png"
+        return savepath
 
 
     def bichart(self, varnames, phase, output_dir):
@@ -123,7 +124,7 @@ class Charts:
         #plt.subplots_adjust(bottom= 0.1, left = 0.1)
         ax.legend(loc = "upper left")
         ax2.legend(loc = "lower left")
-        
-        plt.savefig(f"{output_dir}/{plot_label0} & {plot_label1} - phase: {phase} - cycle: {self.cycle_nbr}.png")
+        savepath = os.path.normpath(f"{output_dir}/{plot_label0} & {plot_label1} - phase: {phase} - cycle: {self.cycle_nbr}.png")
+        plt.savefig(savepath)
         plt.close()
-        return f"{output_dir}/{plot_label0} & {plot_label1} - phase: {phase} - cycle: {self.cycle_nbr}.png"   
+        return savepath  
