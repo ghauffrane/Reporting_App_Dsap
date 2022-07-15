@@ -1,4 +1,5 @@
 from pkgutil import ImpImporter
+from unicodedata import decimal
 import pandas as pd
 import sys
 import os
@@ -27,7 +28,7 @@ class LoadData:
             return data
             
         elif data_path.endswith('.xlsx'): 
-            data = pd.read_excel(data_path)
+            data = pd.read_excel(data_path, decimal = ".")
             self.columns = list(data.columns)
             return data
 

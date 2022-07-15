@@ -63,7 +63,6 @@ class MainWindow(QMainWindow):
         self.browse_3.clicked.connect(partial(self.browsefiles, "browse_3"))
         self.process_data.clicked.connect(self.processData)
         self.process_data_3.clicked.connect(self.process_sys_data)
-        
         self.cleanup_btn.clicked.connect(self.CleanUp)
 
 
@@ -82,6 +81,8 @@ class MainWindow(QMainWindow):
         self.stacked_widget.setCurrentIndex(3)
         self.label_9.setText(f"SIS Matrix")
         self.history()
+        history_table = self.get_history_table()
+        self.tableView.clicked.connect(self.on_click_table)
         
     # =========================== Stacked Widget Redirections End ============================================================= #
 
@@ -194,10 +195,10 @@ class MainWindow(QMainWindow):
             
             if len(variables)==2: 
                 output_path = chartmaker.bichart(variables, phase, img_out_dir)
+                self.this_session_data.update_current_chart_path = output_path
             elif len(variables)==1: 
                 output_path = chartmaker.unichart(variables, phase, img_out_dir)
-            
-            self.this_session_data.update_current_chart_path = output_path
+                self.this_session_data.update_current_chart_path = output_path
 
             pixmap = QPixmap(output_path)
             self.chart_area.setPixmap(pixmap)
@@ -331,7 +332,7 @@ class MainWindow(QMainWindow):
         self.data_process_prog_bar_3.setValue(5)
         csvloader2 = load.LoadData()
         self.data_process_prog_bar_3.setValue(20)
-        
+
         try: 
             csvdata = csvloader2.load_dt(self.this_sys_session_data.chosen_file_path)
             start = csvdata['ts '].iloc[0]
@@ -385,18 +386,19 @@ class MainWindow(QMainWindow):
             self.matrixView.horizontalHeader().setStretchLastSection(True)
             self.matrixView.horizontalHeader().setSectionResizeMode(
                 QHeaderView.Stretch)
-
+            print("Update status: ", update_status) 
+            
+            
             if update_status: 
                 sis_algo.save_update_matrix(sys_df, data_date, data_filepath=self.this_sys_session_data.chosen_file_path)
+                self.history()
                 self.statusBar().showMessage("Data successfully processed: update matrix computed and saved!")
                 self.statusBar().setStyleSheet("background-color : green")
             elif update_status == False: 
                 self.statusBar().showMessage("This matrix is the same as the last matrix updated. Choose different data to process.")
                 self.statusBar().setStyleSheet("background-color : pink")
-
+            
             self.data_process_prog_bar_3.setValue(100)
-
-            self.history()
 
         except NotFoundColumn as NFCol:
             self.statusBar().showMessage(f"{NFCol.message}. Please load data that contains this column to continue.")
@@ -405,6 +407,12 @@ class MainWindow(QMainWindow):
         #     self.statusBar().showMessage(f"A problem occured while loading this data:  {e}")
         #     self.statusBar().setStyleSheet("background-color : pink")
 
+    def get_history_table(self):
+        with open("./core/SIS/sis_metadata.json", "r") as f: 
+            metadata = json.loads(f.read())
+        if len(metadata["matrix_history"])>0:
+            history_table = pd.DataFrame.from_dict(metadata["matrix_history"])
+            return history_table
 
     def history(self): 
         with open("./core/SIS/sis_metadata.json", "r") as f: 
@@ -417,21 +425,22 @@ class MainWindow(QMainWindow):
             self.tableView.horizontalHeader().setStretchLastSection(True)
             self.tableView.horizontalHeader().setSectionResizeMode(
                 QHeaderView.Stretch)
-            self.tableView.clicked.connect(partial(self.on_click_table, df = history_table))
+                
     
-    def on_click_table(self, df):    
+    def on_click_table(self):    
         # when a row is clicked the matrix is displayed below
+        ddf = self.get_history_table()
         currentindex = self.tableView.selectionModel().currentIndex()
         selected_row = currentindex.row()
-        the_matrix = df.iloc[selected_row]
+        print("selected row: ", selected_row)
+        print("length DF history: ", ddf.shape[0])
+        the_matrix = ddf.iloc[selected_row - 1]
         the_matrix_df = pd.DataFrame.from_dict(the_matrix["update_matrix"])
         matrix_model = dataframeTable.DataFrameModel(the_matrix_df)
         self.matrixView_2.setModel(matrix_model)
         self.matrixView_2.horizontalHeader().setStretchLastSection(True)
         self.matrixView_2.horizontalHeader().setSectionResizeMode(
             QHeaderView.Stretch)
-
-
 
 
     # =========================== Press Functions End ======================================================================= #

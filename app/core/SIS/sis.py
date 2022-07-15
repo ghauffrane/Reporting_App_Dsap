@@ -1,7 +1,5 @@
-from curses import meta
 import pandas as pd
 import numpy as np
-from openpyxl import load_workbook
 from datetime import datetime
 import json
 
@@ -12,12 +10,15 @@ class SIS:
 
         with open("./core/SIS/sis_metadata.json", "r") as f: 
             self.metadata = json.loads(f.read())
-        
         self.last_matrix = self.get_last_matrix()
+        
         
     
     def get_sys_matrix(self, fin_df, df, ddf):
         
+        update_status = False
+        if fin_df ==0: 
+            fin_df +=1
         self.Class = self.last_matrix.copy()  
         for i in range(fin_df):
             
@@ -58,26 +59,22 @@ class SIS:
         else: 
             update_status = True
             return self.Class, update_status
-            
+
 
 
     def get_last_matrix(self):
   
         if len(self.metadata["matrix_history"]) == 0:
             last_matrix = pd.DataFrame(self.metadata["default_matrix"])
-        else: 
-            # To be sorted
-            # if len(self.metadata["matrix_history"])> 1:
-            #     sorted_metadata_list = sorted(self.metadata["matrix_history"], key=lambda d: d['creation_time']) 
-            # else:
-            #     sorted_metadata_list = self.metadata["matrix_history"]
-            last_meta = self.metadata["matrix_history"][-1]
 
+        elif len(self.metadata["matrix_history"])>= 1: 
+            sorted_metadata_list = sorted(self.metadata["matrix_history"], key=lambda d: d['creation_time']) 
+            last_meta = sorted_metadata_list[-1]
             last_matrix = pd.DataFrame(last_meta["update_matrix"])
         
         desired_cols = ["X", "Y" , "Z", "W", "ZL", "ZH", "FL", "FH", "Cpt"]
         last_matrix =last_matrix[desired_cols]
-        return last_matrix.round(6)
+        return last_matrix
 
 
     def save_update_matrix(self, update_matrix, date: str, data_filepath): 
