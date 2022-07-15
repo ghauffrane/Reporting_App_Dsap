@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  dsap_app_service:
+    image: dsap_app:dev
+    container_name: dsap_container
+    volumes:
+      - dsap_volume:/app1
+
+
+volumes:
+  dsap_volume:
+    driver: local
